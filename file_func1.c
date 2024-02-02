@@ -101,3 +101,47 @@ void free_tokens(void)
 	arg_s->tokens = NULL;
 
 }
+
+
+/**
+ * execute_instruction - A function that executes the opcode instruction
+ * passed to it
+ *
+ * Return: Nothing
+ */
+
+void execute_instruction(void)
+{
+	stack_t *stack = NULL;
+
+	int i = 0;
+	instruction_t instructions[] = {
+		{"push", push_stack},
+		{"pall", pall_stack},
+		/*{"pint", pint_stack}*/
+		{NULL, NULL}
+	};
+
+	if (arg_s->num_tokens == 0)
+		return;
+
+	while (instructions[i].opcode)
+	{
+		if (strcmp(instructions[i].opcode, arg_s->tokens[0]) == 0)
+		{
+			arg_s->instruction.opcode = instructions[i].opcode;
+			arg_s->instruction.f = instructions[i].f;
+			/* execute instruction */
+			arg_s->instruction.f(&stack, arg_s->line_num);
+			return;
+		}
+		i++;
+	}
+
+
+	fprintf(stderr, "L%d: unknown instruction %s\n", arg_s->line_num, arg_s->tokens[0]);
+	fclose(arg_s->file);
+	free_tokens();
+	free(arg_s);
+	exit(EXIT_FAILURE);
+}
