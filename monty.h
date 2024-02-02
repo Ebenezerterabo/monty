@@ -59,6 +59,7 @@ typedef struct global_var_s
 	char *buf;
 	char **tokens;
 	int num_tokens;
+	instruction_t instruction;
 } glo_var;
 
 extern glo_var *arg_s;
