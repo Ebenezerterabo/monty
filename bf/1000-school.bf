@@ -1,0 +1,7 @@
+++++++++++[>++++++++<-]>+++.   # This is 'S' (ASCII value: 83)
+>+++++++++++[>+++++++++<-]>.  # This is 'c' (ASCII value: 99)
+>++++++++++[>++++++++++<-]>++++.  # This is 'h' (ASCII value: 104)
+>++++++++++[>++++++++++<-]>+++++++++++.  # This is 'o' (ASCII value: 111)
+>++++++++++[>++++++++++<-]>+++++++++++.  # This is 'o' (ASCII value: 111)
+>++++++++++[>++++++++++<-]>++++++++.  # This is 'l' (ASCII value: 108)
+>++[>+++++<-]>.  # This is a new line character (ASCII value: 10)
