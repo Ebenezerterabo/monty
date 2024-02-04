@@ -106,21 +106,22 @@ void pint_stack(stack_t **stack, unsigned int line_number)
 
 void pop_stack(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current;
+	stack_t *top;
 	(void)stack;
 
 	if (arg_s->head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(&arg_s->head);
 		exit(EXIT_FAILURE);
 	}
 
-	current = arg_s->head;
-	arg_s->head = current->next;
+	top = arg_s->head;
+	arg_s->head = top->next;
 
 	if (arg_s->head)
-		current->next->prev = NULL;
+		top->next->prev = NULL;
 
-	free(current);
+	free(top);
 	arg_s->stack_len -= 1;
 }
