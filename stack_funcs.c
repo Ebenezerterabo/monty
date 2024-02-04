@@ -118,6 +118,9 @@ void pop_stack(stack_t **stack, unsigned int line_number)
 	current = arg_s->head;
 	arg_s->head = current->next;
 
+	if (arg_s->head)
+		current->next->prev = NULL;
+
 	free(current);
 	arg_s->stack_len -= 1;
 }
