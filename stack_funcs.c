@@ -60,9 +60,9 @@ void push_stack(stack_t **stack, unsigned int line_number)
 
 void pall_stack(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp = arg_s->head;
 	(void)stack;
 	(void)line_number;
-	stack_t *temp = arg_s->head;
 
 	if (arg_s->head == NULL)
 		return;

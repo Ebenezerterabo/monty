@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define _GNU_SOURCE
+
 #define DELIM " \t\n\r"
 /** Standard Libraries **/
 #include <stdio.h>
