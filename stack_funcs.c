@@ -16,7 +16,7 @@ void push_stack(stack_t **stack, unsigned int line_number)
 
 	if (arg_s->num_tokens <= 1 || !(is_valid_integer(arg_s->tokens[1])))
 	{
-		fprintf(stderr, "L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free(arg_s);
 		exit(EXIT_FAILURE);
 	}
