@@ -95,3 +95,29 @@ void pint_stack(stack_t **stack, unsigned int line_number)
 
 	printf("%d\n", arg_s->head->n);
 }
+
+/**
+ * pop_stack - Removes the top element of the stack
+ * @stack: The head of the stack
+ * @line_number: The line where the error occurred
+ *
+ * Return: Nothing
+ */
+
+void pop_stack(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current;
+	(void)stack;
+
+	if (arg_s->head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(&arg_s->head);
+		exit(EXIT_FAILURE);
+	}
+
+	current = arg_s->head;
+	arg_s->head = current->next;
+	free(current);
+	arg_s->stack_len -= 1;
+}
