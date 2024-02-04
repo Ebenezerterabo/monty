@@ -73,3 +73,25 @@ void pall_stack(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
+/**
+ * pint_stack - A function that print a value at the
+ * current node
+ * @stack: pointer to the stack;
+ * @line_number: line number of each instruction
+ *
+ * Return: Nothing
+ */
+
+void pint_stack(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+
+	if (arg_s->head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", arg_s->head->n);
+}

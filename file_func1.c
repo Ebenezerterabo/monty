@@ -118,7 +118,7 @@ void execute_instruction(void)
 	instruction_t instructions[] = {
 		{"push", push_stack},
 		{"pall", pall_stack},
-		/*{"pint", pint_stack}*/
+		{"pint", pint_stack},
 		{NULL, NULL}
 	};
 

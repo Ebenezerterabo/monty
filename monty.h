@@ -80,4 +80,5 @@ void free_stack(stack_t **head);
 /** stack functions **/
 void push_stack(stack_t **stack, unsigned int line_number);
 void pall_stack(stack_t **stack, unsigned int line_number);
+void pint_stack(stack_t **stack, unsigned int line_number);
 #endif
