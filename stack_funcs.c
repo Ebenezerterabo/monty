@@ -111,7 +111,7 @@ void pop_stack(stack_t **stack, unsigned int line_number)
 
 	if (arg_s->head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		/*fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);*/
 		free_stack(&arg_s->head);
 		exit(EXIT_FAILURE);
 	}
