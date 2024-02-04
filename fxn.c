@@ -20,7 +20,7 @@ void add_fxn(stack_t **stack, unsigned int line_number)
 	}
 
 	top = *stack;
-	
+
 	sum_total = top->n + top->next->n;
 	top->next->n = sum_total;
 	*stack = top->next;
@@ -38,4 +38,25 @@ void nop_fxn(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
 	(void) line_number;
+}
+
+/**
+ * pop_fxn - Removes the top element of the stack
+ * @stack: The head of the stack
+ * @line_number: The line where the error occurred
+ *
+ * Return: Nothing
+ */
+
+void pop_fxn(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	stack_t *temp = *stack;
+	*stack = (*stack)->next;
+	free(temp);
 }
