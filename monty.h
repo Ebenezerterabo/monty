@@ -67,4 +67,7 @@ extern glo_var *arg_s;
 void read_and_execute_file(FILE *filename);
 void tokenize_buf(void);
 void free_tokens(void);
+void add_fxn(stack_t **stack, unsigned int line_numb);
+void nop_fxn(stack_t **stack, unsigned int line_number);
+
 #endif
