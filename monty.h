@@ -1,12 +1,14 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define _GNU_SOURCE
+
 #define DELIM " \t\n\r"
 /** Standard Libraries **/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -48,6 +50,8 @@ typedef struct instruction_s
  * @line_num: line number
  * @tokens: array of string
  * @num_tokens: number of tokens
+ * @head: pointer to the head stack;
+ * @stack_len: length of the stack
  *
  * Description: global variable arguments used in our program
  */
@@ -59,6 +63,8 @@ typedef struct global_var_s
 	char *buf;
 	char **tokens;
 	int num_tokens;
+	stack_t *head;
+	unsigned int stack_len;
 } glo_var;
 
 extern glo_var *arg_s;
@@ -67,7 +73,18 @@ extern glo_var *arg_s;
 void read_and_execute_file(FILE *filename);
 void tokenize_buf(void);
 void free_tokens(void);
+<<<<<<< HEAD
 void add_fxn(stack_t **stack, unsigned int line_numb);
 void nop_fxn(stack_t **stack, unsigned int line_number);
 
+=======
+void execute_instruction(void);
+int is_valid_integer(const char *str);
+void free_stack(stack_t **head);
+
+/** stack functions **/
+void push_stack(stack_t **stack, unsigned int line_number);
+void pall_stack(stack_t **stack, unsigned int line_number);
+void pint_stack(stack_t **stack, unsigned int line_number);
+>>>>>>> 96c63a42ca52475948fa3b43ff731789ef7f8aac
 #endif

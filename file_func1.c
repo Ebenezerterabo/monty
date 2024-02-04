@@ -41,7 +41,6 @@ void tokenize_buf(void)
 			exit(EXIT_FAILURE);
 		}
 		strcpy(arg_s->tokens[i], token);
-		printf("%s\n", token);
 		token = strtok(NULL, DELIM);
 		i++;
 	}
@@ -71,9 +70,10 @@ void read_and_execute_file(FILE *filename)
 			exit(EXIT_FAILURE);
 		}
 
-		printf(" %d. %s\n", arg_s->line_num, arg_s->buf);
 		tokenize_buf();
+		execute_instruction();
 		free_tokens();
+
 	}
 
 	free(arg_s->buf);
@@ -100,4 +100,71 @@ void free_tokens(void)
 	free(arg_s->tokens);
 	arg_s->tokens = NULL;
 
+}
+
+
+/**
+ * execute_instruction - A function that executes the opcode instruction
+ * base on the array of instructions.
+ *
+ * Return: Nothing
+ */
+
+void execute_instruction(void)
+{
+	stack_t *stack = NULL;
+
+	int i = 0;
+	instruction_t instructions[] = {
+		{"push", push_stack},
+		{"pall", pall_stack},
+		{"pint", pint_stack},
+		{NULL, NULL}
+	};
+
+	if (arg_s->num_tokens == 0)
+		return;
+
+	while (instructions[i].opcode)
+	{
+		if (strcmp(instructions[i].opcode, arg_s->tokens[0]) == 0)
+		{
+			instructions[i].f(&stack, arg_s->line_num);
+			return;
+		}
+		i++;
+	}
+
+	fprintf(stderr, "L%d: unknown instruction %s\n", arg_s->line_num,
+		arg_s->tokens[0]);
+	fclose(arg_s->file);
+	free(arg_s);
+	free_tokens();
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * is_valid_integer - A function that checks a string to see
+ * if it's a valid integer
+ * @str: string
+ *
+ * Return: Always 1 on Success, otherwise 0.
+ */
+
+int is_valid_integer(const char *str)
+{
+	if (str == NULL || *str == '\0')
+		return (0);
+
+	if (*str == '+' || *str == '-')
+		str++;
+
+	while (*str)
+	{
+		if (!isdigit(*str))
+			return (0);
+		str++;
+	}
+
+	return (1);
 }

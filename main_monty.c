@@ -24,10 +24,13 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
+	/* initializing Global variables */
 	arg_s->buf = NULL;
 	arg_s->line_num = 0;
 	arg_s->file = NULL;
 	arg_s->num_tokens = 0;
+	arg_s->head = NULL;
+	arg_s->stack_len = 0;
 
 	arg_s->file = fopen(av[1], "r");
 	if (arg_s->file == NULL)
@@ -38,8 +41,9 @@ int main(int ac, char **av)
 	}
 
 	read_and_execute_file(arg_s->file);
-
+	free_stack(&arg_s->head);
 	fclose(arg_s->file);
+
 	free(arg_s);
 	return (0);
 }
