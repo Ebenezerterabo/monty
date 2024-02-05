@@ -74,9 +74,9 @@ void read_and_execute_file(FILE *filename);
 void tokenize_buf(void);
 void free_tokens(void);
 
-void add_fxn(stack_t **stack, unsigned int line_numb);
-void nop_fxn(stack_t **stack, unsigned int line_number);
-void pop_fxn(stack_t **stack, unsigned int line_number);
+/*void add_fxn(stack_t **stack, unsigned int line_numb);*/
+/*void nop_fxn(stack_t **stack, unsigned int line_number);*/
+
 void execute_instruction(void);
 int is_valid_integer(const char *str);
 void free_stack(stack_t **head);
@@ -85,5 +85,6 @@ void free_stack(stack_t **head);
 void push_stack(stack_t **stack, unsigned int line_number);
 void pall_stack(stack_t **stack, unsigned int line_number);
 void pint_stack(stack_t **stack, unsigned int line_number);
-
+void pop_stack(stack_t **stack, unsigned int line_number);
+void swap_stack(stack_t **stack, unsigned int line_number);
 #endif
