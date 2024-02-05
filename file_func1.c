@@ -125,6 +125,7 @@ void execute_instruction(void)
 		{"pop", pop_stack},
 		{"swap", swap_stack},
 		{"add", add_stack},
+		{"nop", nop_stack},
 		{NULL, NULL}
 	};
 
