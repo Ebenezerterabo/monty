@@ -66,7 +66,8 @@ void read_and_execute_file(FILE *filename)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
 			free_tokens();
-			/*free(arg_s);*/
+			fclose(arg_s->file);
+			free(arg_s);
 			exit(EXIT_FAILURE);
 		}
 
@@ -75,8 +76,10 @@ void read_and_execute_file(FILE *filename)
 		free_tokens();
 
 	}
+	fclose(arg_s->file);
 
-	free(arg_s->buf);
+	/*free(arg_s->buf);*/
+	free(arg_s);
 }
 
 /**
@@ -121,6 +124,7 @@ void execute_instruction(void)
 		{"pint", pint_stack},
 		{"pop", pop_stack},
 		{"swap", swap_stack},
+		{"add", add_stack},
 		{NULL, NULL}
 	};
 
