@@ -143,6 +143,7 @@ void swap_stack(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		free_stack(&arg_s->head);
+		fclose(arg_s->file);
 		exit(EXIT_FAILURE);
 	}
 
