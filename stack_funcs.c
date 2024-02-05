@@ -157,7 +157,7 @@ void swap_stack(stack_t **stack, unsigned int line_number)
 	temp1->next = temp2->next;
 
 	temp2->next = temp1;
-	temp1->prev = temp2;
-	temp1->prev = NULL;
+	/*temp1->prev = temp2;*/
+	/*temp1->prev = NULL;*/
 	arg_s->head = temp2;
 }
