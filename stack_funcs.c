@@ -17,14 +17,19 @@ void push_stack(stack_t **stack, unsigned int line_number)
 	if (arg_s->num_tokens <= 1 || !(is_valid_integer(arg_s->tokens[1])))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free(arg_s->buf);
+		free_tokens();
+		fclose(arg_s->file);
 		free(arg_s);
 		exit(EXIT_FAILURE);
 	}
-
 	top_new = malloc(sizeof(stack_t));
 	if (top_new == NULL)
 	{
 		fprintf(stderr, "malloc failed\n");
+		free(arg_s->buf);
+		free_tokens();
+		fclose(arg_s->file);
 		free(arg_s);
 		exit(EXIT_FAILURE);
 	}
@@ -44,7 +49,6 @@ void push_stack(stack_t **stack, unsigned int line_number)
 		top_new->prev = NULL;
 		arg_s->head = top_new;
 	}
-
 	arg_s->head = top_new;
 	arg_s->stack_len += 1;
 }
