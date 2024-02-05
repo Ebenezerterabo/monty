@@ -52,3 +52,17 @@ void add_stack(stack_t **stack, unsigned int line_number)
 	arg_s->head->next->n = result;
 	pop_stack(&arg_s->head, line_number);
 }
+
+/**
+ * nop_stack - A function that does nothing
+ * @stack: pointer to the stack
+ * @line_number: line numbers of instructions read
+ *
+ * Return: Nothing
+ */
+
+void nop_stack(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
